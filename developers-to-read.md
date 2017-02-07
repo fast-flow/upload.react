@@ -31,6 +31,8 @@ npm run npm
 cd output && npm publish
 ```
 
-### Compound Command
+### Release
 
-npm run test-ci && npm run gh && npm run gh-push && npm run npm && cd output && npm publish
+```shell
+npm run release
+```

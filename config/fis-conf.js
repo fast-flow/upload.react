@@ -34,7 +34,6 @@ if (fis.project.currentMedia() === 'npm') {
     fis.match('**.js', {
         parser: [
             function (content, file) {
-                content = 'require("babel-polyfill");' + content
                 return babel.transform(content, require('./babel.js')).code
             },
             fis.plugin("translate-es3ify")

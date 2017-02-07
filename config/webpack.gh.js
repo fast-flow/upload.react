@@ -3,7 +3,7 @@ var webpack = require('webpack')
 var iPackage = require('../package.json')
 
 module.exports = require('./webpack.config')({
-    entry: ["babel-polyfill", './example/dev'],
+    entry: ['./example/dev'],
     devtool: 'source-map',
     externals: {},
     lastPlugins: [
