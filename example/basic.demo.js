@@ -1,5 +1,8 @@
 var React = require('react')
 var Upload = require('upload.react').default
+
+    console.log(Upload)
+
 var App = React.createClass({
     getInitialState: function () {
         return {
@@ -15,7 +18,7 @@ var App = React.createClass({
                     onChange 默认就是 Upload.upload(files[0].id)
                 */}
                 <Upload name="file" action="/upload"
-                    multiple={false}
+                    multiple={true}
                     onChange={function (files) {
                         /*
                         files: [
