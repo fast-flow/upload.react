@@ -34,4 +34,13 @@ module.exports = function (settings) {
       open(url)
       console.log('React hot reload server listening at ' + url);
     })
+
+    app.post('/upload',function(req,res){
+      res.send({
+        status:'success',
+        data:{
+          id:'3456789'
+        }
+      })
+    })
 }
