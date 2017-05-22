@@ -22,6 +22,9 @@ var App = React.createClass({
                     onChange={function (files) {
                         console.group('UploadPicker onChange')
                         console.log(files)
+                        self.setState({
+                            src:files[0].thumb
+                        })
                         console.groupEnd()
                         /*
                         files: [
@@ -43,31 +46,15 @@ var App = React.createClass({
                                     // 精确的浮点数
                                     step = 30.214124
                                 */
-                                step = Math.round(step)
-                                console.info('上传进度', step)
+                                // let percent = Math.round(step.percent)
+                                console.info('上传进度', step.percent)
                             },
-                            onUpload : function (res) {
-                                res = JSON.parse(res)
-                                self.setState({
-                                    src: res.data.src,
-                                    id: res.data.id
-                                })
+                            onSuccess : function (res) {
+                                console.log(res)
+                                // self.setState({
+                                //     id: res.data.id
+                                // })
                             }
-                        })
-                    }}
-                    onProgress={function (step, file) {
-                        /*
-                            // 精确的浮点数
-                            step = 30.214124
-                        */
-                        step = Math.round(step)
-                        console.info('上传进度', step)
-                    }}
-                    onUpload={function (res) {
-                        res = JSON.parse(res)
-                        self.setState({
-                            src: res.data.src,
-                            id: res.data.id
                         })
                     }}
                  >
