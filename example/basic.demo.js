@@ -19,13 +19,11 @@ var App = React.createClass({
                 */}
                 <UploadPicker name="file" action="/upload"
                     multiple={true}
+                    thumb={'http://dummyimage.com/200x200/000/fff?text=thumb'}
                     onChange={function (files) {
-                        console.group('UploadPicker onChange')
-                        console.log(files)
                         self.setState({
                             src:files[0].thumb
                         })
-                        console.groupEnd()
                         /*
                         files: [
                             {
