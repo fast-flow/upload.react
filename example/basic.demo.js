@@ -17,8 +17,9 @@ var App = React.createClass({
                 {/*
                     onChange 默认就是 Upload.upload(files[0].id)
                 */}
-                <UploadPicker name="file" action="/upload"
+                <UploadPicker name="file" action="/upload?status=success"
                     multiple={true}
+                    data={{'a':'1'}}
                     thumb={'http://dummyimage.com/200x200/000/fff?text=thumb'}
                     onChange={function (files) {
                         self.setState({
@@ -48,10 +49,15 @@ var App = React.createClass({
                                 console.info('上传进度', step.percent)
                             },
                             onSuccess : function (res) {
-                                console.log(res)
-                                // self.setState({
-                                //     id: res.data.id
-                                // })
+                                self.setState({
+                                    id: res.data.id
+                                })
+                            },
+                            onError : function (err, res){
+                                console.log(err,res)
+                            },
+                            onXhrError: function(e) {
+                                console.log(e)
                             }
                         })
                     }}
