@@ -36,11 +36,36 @@ module.exports = function (settings) {
     })
 
     app.post('/upload',function(req,res){
-      res.send({
-        status:'success',
-        data:{
-          id:'3456789'
-        }
-      })
+      var status = req.query.status || '' 
+      switch(status){
+        case 'error':
+          res.send({
+            status:'error',
+            msg:'error detail msg'
+          })
+        break
+        case '500':
+          res.status(500);
+          res.send({
+            status:'500',
+          })
+        break
+        case 'success':
+          res.send({
+            status:'success',
+            data:{
+              id:'3456789'
+            }
+          })
+        break
+        case '307':
+          res.status(307);
+          res.send({
+            status:'307',
+          })
+        default:
+          console.log('not find \'status\' in config/server.js')
+          res.end();
+      }
     })
 }
