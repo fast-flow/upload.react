@@ -18,10 +18,10 @@ var App = React.createClass({
                     onChange 默认就是 Upload.upload(files[0].id)
                 */}
                 <UploadPicker name="file" action="/upload?status=success"
-                    multiple={true}
                     data={{'a':'1'}}
                     thumb={'http://dummyimage.com/200x200/000/fff?text=thumb'}
-                    onChange={function (files) {
+                    onChange={function (files,errFilesLists) {
+                        console.log(files,errFilesLists)
                         self.setState({
                             src:files[0].thumb
                         })
@@ -35,7 +35,7 @@ var App = React.createClass({
                                 thumb: 'BASE64:sufihsiufh'
                                 // ie8 下不存在 File
                                 File: function File() {}
-                            }
+                            },
                         ]
                         */
                         UploadFile({

@@ -15,6 +15,16 @@
 } -->
 [./basic.demo.js](./basic.demo.js)
 
+## allow-file-type
+
+<div id="example__allow-file-type_node" class="fast-flow-demo">loading...</div>
+
+<!--MR-R {
+    type: "pre",
+    file: './allow-file-type.demo.js'
+} -->
+[./allow-file-type.demo.js](./allow-file-type.demo.js)
+
 
 <!-- MR-H
 <style>.gc-comments {font:12px/1.5 Lantinghei SC,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif}</style>
