@@ -8,8 +8,8 @@ var App = React.createClass({
         return (
             <div>
                 <UploadPicker name="file" action="/upload?status=success"
-                    allow={['.jpg']}
-                    size={1024} // 单位:K
+                    // allow={['.jpg']}
+                    // size={1024} // 单位:K
                     onError={function(errFiles){
                         console.log(errFiles)
                         /*
@@ -26,7 +26,7 @@ var App = React.createClass({
                         */
                     	alert(errFiles[0].errType)
                     }}
-                    onChange={function (files) {
+                    onPick={function (files) {
                         console.log(files)
                     }}
                  >
