@@ -15,15 +15,15 @@
 } -->
 [./basic.demo.js](./basic.demo.js)
 
-## allow-file-type
+## limit
 
-<div id="example__allow-file-type_node" class="fast-flow-demo">loading...</div>
+<div id="example__limit_node" class="fast-flow-demo">loading...</div>
 
 <!--MR-R {
     type: "pre",
-    file: './allow-file-type.demo.js'
+    file: './limit.demo.js'
 } -->
-[./allow-file-type.demo.js](./allow-file-type.demo.js)
+[./limit.demo.js](./limit.demo.js)
 
 
 <!-- MR-H

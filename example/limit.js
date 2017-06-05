@@ -9,19 +9,25 @@ var App = React.createClass({
             <div>
                 <UploadPicker name="file" action="/upload?status=success"
                     allow={['.jpg']}
-                    onChange={function (files,errFilesLists) {
-                        console.log(files,errFilesLists)
+                    size={1024} // 单位:K
+                    onError={function(errFiles){
+                        console.log(errFiles)
                         /*
                         errFilesLists: [
                             {
-                                name: 'ashdasdasd.jpg',
-                                errmsg:'文件格式错误'
+                                file: [ Object File ],
+                                errType:'TYPE'
+                            },
+                            {
+                                file: [ Object File ],
+                                errType:'SIZE'
                             },
                         ]
                         */
-                        if(errFilesLists.length > 0){
-                        	alert(errFilesLists[0].errmsg)
-                        }
+                    	alert(errFiles[0].errType)
+                    }}
+                    onChange={function (files) {
+                        console.log(files)
                     }}
                  >
                     <button type="button">Picker</button>
