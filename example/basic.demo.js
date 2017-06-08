@@ -1,7 +1,6 @@
 var React = require('react')
 var UploadPicker = require('upload.react').default
 var UploadFile = require('upload.react').UploadFile
-// import UploadPicker , { UploadFile } from 'upload.react'
 
 var App = React.createClass({
     getInitialState: function () {
