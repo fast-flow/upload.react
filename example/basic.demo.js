@@ -14,14 +14,11 @@ var App = React.createClass({
         var self = this
         return (
             <div>
-                {/*
-                    onChange 默认就是 Upload.upload(files[0].id)
-                */}
                 <UploadPicker name="file" action="/upload?status=success"
                     data={{'a':'1'}}
                     thumb={'http://dummyimage.com/200x200/000/fff?text=thumb'}
-                    onChange={function (files,errFilesLists) {
-                        console.log(files,errFilesLists)
+                    onPick={function (files) {
+                        console.log(files)
                         self.setState({
                             src:files[0].thumb
                         })
