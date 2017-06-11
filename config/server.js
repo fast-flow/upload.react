@@ -7,6 +7,7 @@ var hashToPort = require('hash-to-port')
 var hotServerPort = hashToPort(iPackage.name + 'fast-flow/react:server')
 var hotConfig = require('./webpack.hot')
 var webpackConfig = require('./webpack.webpack')
+var bodyParser = require('body-parser');
 
 module.exports = function (settings) {
     var config
@@ -35,7 +36,11 @@ module.exports = function (settings) {
       console.log('React hot reload server listening at ' + url);
     })
 
+    app.use(bodyParser.json()); // for parsing application/json
+    app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
     app.post('/upload',function(req,res){
+      console.log(req.body)
       var status = req.query.status || '' 
       switch(status){
         case 'error':
