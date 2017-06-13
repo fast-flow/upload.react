@@ -48,9 +48,9 @@ var App = React.createClass({
                             },
                             onSuccess : function (res) {
                             	alert('onSuccess : '+JSON.stringify(res))
-                                self.setState({
-                                    id: res.data.id
-                                })
+                                // self.setState({
+                                //     id: res.data.id
+                                // })
                             },
                             onError : function (err, res){
                                 console.log(err,res)

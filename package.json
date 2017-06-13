@@ -17,6 +17,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "fms": "^0.2.0",
+    "multer": "^1.3.0",
     "react": "0.14.8",
     "react-dom": "0.14.8",
     "util.react": "^1.3.3",
