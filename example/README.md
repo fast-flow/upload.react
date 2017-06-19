@@ -2,8 +2,10 @@
 
 ## Navigation
 
-1. [ie8](./ie8.md)
-2. [custom-style](./custom-style.md)
+1. [limit](./limit.md)
+2. [multiple](./multiple.md)
+3. [ie8](./ie8.md)
+4. [custom-style](./custom-style.md)
 
 
 ## Basic
@@ -15,17 +17,6 @@
     file: './basic.demo.js'
 } -->
 [./basic.demo.js](./basic.demo.js)
-
-## limit
-
-<div id="example__limit_node" class="fast-flow-demo">loading...</div>
-
-<!--MR-R {
-    type: "pre",
-    file: './limit.demo.js'
-} -->
-[./limit.demo.js](./limit.demo.js)
-
 
 <!-- MR-H
 <style>.gc-comments {font:12px/1.5 Lantinghei SC,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif}</style>

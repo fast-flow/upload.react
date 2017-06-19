@@ -8,19 +8,19 @@ var App = React.createClass({
         return (
             <div>
                 <UploadPicker name="file" action="/upload?status=success"
-                    // allow={['.jpg']}
-                    // size={1024} // 单位:K
+                    allow={['.jpg']}
+                    size={1024} // 单位:K
                     onError={function(errFiles){
                         console.log(errFiles)
                         /*
                         errFilesLists: [
                             {
                                 file: [ Object File ],
-                                errType:'TYPE'
+                                errType:'TYPE' // 文件类型错误
                             },
                             {
                                 file: [ Object File ],
-                                errType:'SIZE'
+                                errType:'SIZE' // 文件大小错误
                             },
                         ]
                         */

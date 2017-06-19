@@ -10,7 +10,7 @@ var render = ReactDOM.render
     })
 })(document.getElementById('example__basic_node'))
 
-// allow-file-type
+// limit
 ;(function (node) {
     if (!node) {return}
     require(['./limit.demo.js'], function (Demo) {
@@ -18,6 +18,15 @@ var render = ReactDOM.render
         render(<Demo />, node)
     })
 })(document.getElementById('example__limit_node'))
+
+// multiple
+;(function (node) {
+    if (!node) {return}
+    require(['./multiple.demo.js'], function (Demo) {
+        Demo = Demo.default || Demo
+        render(<Demo />, node)
+    })
+})(document.getElementById('example__multiple_node'))
 
 // ie8
 ;(function (node) {

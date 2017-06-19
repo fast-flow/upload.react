@@ -8,4 +8,11 @@
 .r-upload-xhr-input {
     display: none;
 }
+.r-upload-iframe {}
+.r-upload-iframe-label {}
+.r-upload-iframe-iframe ,
+.r-upload-iframe-form ,
+.r-upload-iframe-form-input {
+	display: none;
+}
 /* Configurable style */
