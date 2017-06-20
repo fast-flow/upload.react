@@ -5,7 +5,7 @@ var iPackage = require('../package.json')
 var hashToPort = require('hash-to-port')
 var serverPort = hashToPort(iPackage.name + 'fast-flow/react:static-server')
 var bodyParser = require('body-parser');
-var multer = require('multer'); 
+var multer = require('multer');
 
 var app = express();
 app.use(express.static(__dirname + '/../output'))
@@ -23,12 +23,19 @@ app.listen(serverPort, function(err) {
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(multer({dest:'./'})); // for parsing multipart/form-data
-app.post('/upload',function(req,res){
+app.all('/upload',function(req,res){
+  // 设置接受可跨域请求
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+  res.header("X-Powered-By",' 3.2.1')
+  res.header("Content-Type", "application/json;charset=utf-8");
+  console.log(1)
 	console.log(req.query.status)
-	res.send({
+	res.send(JSON.stringify({
         status:'success',
         data:{
           id:'11111'
         }
-    })
+    }))
 })

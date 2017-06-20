@@ -16,7 +16,11 @@ var App = React.createClass({
             <div>
             	<h3>一次只能选择一个文件</h3>
 	            {/* TODO : allow , size , onError */}
-                <UploadPicker name="file" action="/upload?status=success"
+                <UploadPicker name="file"
+                    // 跨域测试
+                    // action="http://192.168.20.56:32954/upload?status=success"
+                    // 正常测试
+                    action="/upload?status=success"
                     data={{'a':'1'}}
                     thumb={'http://dummyimage.com/200x200/000/fff?text=thumb'}
                     onPick={function (files) {
