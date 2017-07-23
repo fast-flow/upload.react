@@ -13,13 +13,14 @@ var App = React.createClass({
         var self = this
         return (
             <div>
-                <UploadPicker name="file" action="http://localhost:32954/upload?status=success"
+                <UploadPicker name="file"
+                    // action="/upload?status=success"
+                    // action="/upload?status=error"
+                    // action="/upload?status=500"
+                    // action="/upload?status=307"
+                    // 跨域测试
+                    action="http://localhost:32954/upload?status=success"
                     data={{'a':'1'}}
-                    headers={{
-                        'Access-Control-Allow-Origin':'*',
-                        'Access-Control-Allow-Methods':'POST',
-                        'Access-Control-Allow-Headers':'x-requested-with,content-type'
-                    }}
                     thumb={'http://dummyimage.com/200x200/000/fff?text=thumb'}
                     onPick={function (files) {
                         console.log(files)
@@ -50,6 +51,7 @@ var App = React.createClass({
                                 console.info('上传进度', step.percent)
                             },
                             onSuccess : function (res) {
+                                console.log(res)
                                 if(res.status == 'success'){
                                     self.setState({
                                         id: res.data.id

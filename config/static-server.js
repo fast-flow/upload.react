@@ -26,10 +26,7 @@ app.use(multer({dest:'./'})); // for parsing multipart/form-data
 app.all('/upload',function(req,res){
   // 设置接受可跨域请求
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-  res.header("X-Powered-By",' 3.2.1')
-  res.header("Content-Type", "application/json;charset=utf-8");
+  res.header("Access-Control-Allow-Headers","access-control-allow-headers,access-control-allow-methods,access-control-allow-origin,x-requested-with")
   console.log(1)
 	console.log(req.query.status)
 	res.send(JSON.stringify({
