@@ -59,11 +59,11 @@ var App = React.createClass({
                                 alert('上传进度'+step.percent)
                             },
                             onSuccess : function (res) {
-                                res = JSON.stringify(res) || res
                             	alert('onSuccess : '+res)
-                                // self.setState({
-                                //     id: res.data.id
-                                // })
+                                res = JSON.parse(res) || res
+                                self.setState({
+                                    id: res.data.id || ''
+                                })
                             },
                             onError : function (err, res){
                                 alert(JSON.stringify(err))
@@ -75,6 +75,10 @@ var App = React.createClass({
                         })
                     }}
                  >
+                     {
+                         self.state.src
+                         ? (<img src={self.state.src} alt="" style={{maxWidth:100+'px'}}/>) : null
+                     }
                     <button type="button">Picker</button>
                 </UploadPicker>
             </div>

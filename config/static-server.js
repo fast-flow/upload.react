@@ -35,7 +35,7 @@ app.all('/upload',function(req,res){
       // ie8 测试相应数据只能为字符串,否则ie自动将响应值作为下载 (待优化转换)
       if(req.hostname != '127.0.0.1'){
           console.log('ie测试机')
-          res.send('{status:success,data:{port:32954,type:all}}')
+          res.send('{\"status\":\"success\",\"data\":{\"port\":32954,\"type\":\"all\"}}')
           return false
       }
 

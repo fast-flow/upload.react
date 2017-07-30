@@ -9,7 +9,9 @@
     display: none;
 }
 .r-upload-iframe {}
-.r-upload-iframe-label {}
+.r-upload-iframe-label {
+    position: relative;
+}
 .r-upload-iframe-iframe ,
 .r-upload-iframe-form ,
 .r-upload-iframe-form-input {
@@ -18,8 +20,8 @@
     height: 0;
     opacity: 0;
     position: absolute;
-    top:-999999;
-    left:-999999;
-    z-index: -1;
+    top:0;
+    left:0;
+    z-index: -10;
 }
 /* Configurable style */
