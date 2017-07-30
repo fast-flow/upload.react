@@ -19,7 +19,7 @@ var App = React.createClass({
                     // action="/upload?status=500"
                     // action="/upload?status=307"
                     // 跨域测试
-                    action="http://localhost:32954/upload?status=success"
+                    action="http://127.0.0.1:50044/upload?status=success"
                     data={{'a':'1'}}
                     thumb={'http://dummyimage.com/200x200/000/fff?text=thumb'}
                     onPick={function (files) {

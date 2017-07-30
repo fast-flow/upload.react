@@ -2,7 +2,6 @@ var React = require('react')
 var UploadPicker = require('upload.react').default
 var UploadFile = require('upload.react').UploadFile
 
-
 var App = React.createClass({
     getInitialState: function () {
         return {
@@ -17,10 +16,7 @@ var App = React.createClass({
             	<h3>一次只能选择一个文件</h3>
 	            {/* TODO : allow , size , onError */}
                 <UploadPicker name="file"
-                    // 跨域测试
-                    // action="http://192.168.20.56:32954/upload?status=success"
-                    // 正常测试
-                    action="/upload?status=success"
+                    action="http://192.168.10.39:50044/upload?status=success"
                     data={{'a':'1'}}
                     thumb={'http://dummyimage.com/200x200/000/fff?text=thumb'}
                     onPick={function (files) {
@@ -48,7 +44,7 @@ var App = React.createClass({
                                     step = 30.214124
                                 */
                                 // let percent = Math.round(step.percent)
-                                console.info('上传进度', step.percent)
+                                alert('上传进度'+step.percent)
                             },
                             onSuccess : function (res) {
                             	alert('onSuccess : '+JSON.stringify(res))
@@ -57,10 +53,11 @@ var App = React.createClass({
                                 // })
                             },
                             onError : function (err, res){
-                                console.log(err,res)
+                                alert(JSON.stringify(err))
+                                alert(JSON.stringify(res))
                             },
                             onXhrError: function(e) {
-                                console.log(e)
+                                alert(JSON.stringify(e))
                             }
                         })
                     }}

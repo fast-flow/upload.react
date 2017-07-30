@@ -8,7 +8,7 @@ var hotServerPort = hashToPort(iPackage.name + 'fast-flow/react:server')
 var hotConfig = require('./webpack.hot')
 var webpackConfig = require('./webpack.webpack')
 var bodyParser = require('body-parser');
-var multer = require('multer'); 
+var multer = require('multer');
 
 module.exports = function (settings) {
     var config
@@ -41,9 +41,18 @@ module.exports = function (settings) {
     app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
     app.use(multer({dest:'./'})); // for parsing multipart/form-data
 
+    app.all('/upload',function(req,res){
+      // 设置接受可跨域请求
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers","access-control-allow-headers,access-control-allow-methods,access-control-allow-origin,x-requested-with")
+      console.log('server 1')
+      console.log(req.body)
+      res.send("{status:'all',msg:'all server'}")
+    })
+
     app.post('/upload',function(req,res){
       console.log(req.body)
-      var status = req.query.status || '' 
+      var status = req.query.status || ''
       switch(status){
         case 'error':
           res.send({
@@ -58,12 +67,7 @@ module.exports = function (settings) {
           })
         break
         case 'success':
-          res.send({
-            status:'success',
-            data:{
-              id:'3456789'
-            }
-          })
+          res.send("{status:'success',data:{id:'11111'}}")
         break
         case '307':
           res.status(307);
