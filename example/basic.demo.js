@@ -6,20 +6,30 @@ var App = React.createClass({
     getInitialState: function () {
         return {
             src: '',
-            id: ''
+            id: '',
+            action:'/upload?status=success'
         }
     },
     render: function () {
         var self = this
         return (
             <div>
+                {'xhr type :  '}
+                <select onChange={function(e){
+                            self.setState({
+                                action:e.target.value
+                            })
+                        }}
+                >
+                    <option value="/upload?status=success" >xhr success</option>
+                    <option value="/upload?status=error" >xhr error</option>
+                    <option value="/upload?status=500" >xhr 500</option>
+                    <option value="/upload?status=307" >xhr 307</option>
+                    <option value="http://127.0.0.1:32954/upload?status=success" >xhr cross-domain</option>
+                </select>
+                <hr />
                 <UploadPicker name="file"
-                    // action="/upload?status=success"
-                    // action="/upload?status=error"
-                    // action="/upload?status=500"
-                    // action="/upload?status=307"
-                    // 跨域测试
-                    action="http://127.0.0.1:50044/upload?status=success"
+                    action={self.state.action}
                     data={{'a':'1'}}
                     thumb={'http://dummyimage.com/200x200/000/fff?text=thumb'}
                     onPick={function (files) {
@@ -52,12 +62,13 @@ var App = React.createClass({
                             },
                             onSuccess : function (res) {
                                 console.log(res)
+                                res = typeof res == 'string' ? JSON.parse(res) : res
                                 if(res.status == 'success'){
                                     self.setState({
                                         id: res.data.id
                                     })
                                 }else{
-                                    alert(res.msg)
+                                    console.log(res.msg)
                                 }
                             },
                             onError : function (err, res){

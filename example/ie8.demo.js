@@ -6,7 +6,8 @@ var App = React.createClass({
     getInitialState: function () {
         return {
             src: '',
-            id: ''
+            id: '',
+            action:'http://192.168.10.39:50044/upload?status=success'
         }
     },
     render: function () {
@@ -14,9 +15,20 @@ var App = React.createClass({
         return (
             <div>
             	<h3>一次只能选择一个文件</h3>
+                {'action type :  '}
+                <select onChange={function(e){
+                            self.setState({
+                                action:e.target.value
+                            })
+                        }}
+                >
+                    <option value="http://192.168.10.39:50044/upload?status=success" >action default</option>
+                    <option value="http://192.168.10.39:32954/upload?status=success" >action cross-domain</option>
+                </select>
+                <hr />
 	            {/* TODO : allow , size , onError */}
                 <UploadPicker name="file"
-                    action="http://192.168.10.39:50044/upload?status=success"
+                    action={self.state.action}
                     data={{'a':'1'}}
                     thumb={'http://dummyimage.com/200x200/000/fff?text=thumb'}
                     onPick={function (files) {
@@ -47,7 +59,8 @@ var App = React.createClass({
                                 alert('上传进度'+step.percent)
                             },
                             onSuccess : function (res) {
-                            	alert('onSuccess : '+JSON.stringify(res))
+                                res = JSON.stringify(res) || res
+                            	alert('onSuccess : '+res)
                                 // self.setState({
                                 //     id: res.data.id
                                 // })

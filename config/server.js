@@ -41,13 +41,22 @@ module.exports = function (settings) {
     app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
     app.use(multer({dest:'./'})); // for parsing multipart/form-data
 
-    app.all('/upload',function(req,res){
+    app.all('/upload',function(req,res, next){
       // 设置接受可跨域请求
       res.header("Access-Control-Allow-Origin", "*");
       res.header("Access-Control-Allow-Headers","access-control-allow-headers,access-control-allow-methods,access-control-allow-origin,x-requested-with")
-      console.log('server 1')
+      console.log('----------------server 1')
       console.log(req.body)
-      res.send("{status:'all',msg:'all server'}")
+
+      // ie8 测试相应数据只能为字符串,否则ie自动将响应值作为下载 (待优化转换)
+      if(req.hostname != '127.0.0.1'){
+          console.log('ie测试机')
+          res.send('{status:success,data:{port:50044,type:all}}')
+          return false
+      }else{
+          next()
+      }
+
     })
 
     app.post('/upload',function(req,res){
@@ -67,7 +76,12 @@ module.exports = function (settings) {
           })
         break
         case 'success':
-          res.send("{status:'success',data:{id:'11111'}}")
+          res.send({
+              status:'success',
+              data:{
+                  id:'11111'
+              }
+          })
         break
         case '307':
           res.status(307);

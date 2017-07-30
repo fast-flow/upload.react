@@ -28,9 +28,16 @@ app.all('/upload',function(req,res){
     // 设置接受可跨域请求
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers","access-control-allow-headers,access-control-allow-methods,access-control-allow-origin,x-requested-with")
-    console.log('static-server')
+    console.log('--------------static-server')
     console.log(req.query.status)
-      console.log(req.body)
+    console.log(req.body)
+
+      // ie8 测试相应数据只能为字符串,否则ie自动将响应值作为下载 (待优化转换)
+      if(req.hostname != '127.0.0.1'){
+          console.log('ie测试机')
+          res.send('{status:success,data:{port:32954,type:all}}')
+          return false
+      }
 
   var status = req.query.status || ''
   switch(status){
@@ -47,7 +54,12 @@ app.all('/upload',function(req,res){
       })
     break
     case 'success':
-      res.send("{status:'success',data:{id:'2222222'}}")
+      res.send({
+          "status":"success",
+          "data":{
+              "id":"2222222"
+          }
+      })
     break
     case '307':
       res.status(307);
