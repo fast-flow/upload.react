@@ -45,3 +45,12 @@ var render = ReactDOM.render
         render(<Demo />, node)
     })
 })(document.getElementById('example__custom-style_node'))
+
+// drop
+;(function (node) {
+    if (!node) {return}
+    require(['./drop.demo.js'], function (Demo) {
+        Demo = Demo.default || Demo
+        render(<Demo />, node)
+    })
+})(document.getElementById('example__drop_node'))

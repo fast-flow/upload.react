@@ -84,7 +84,8 @@ var App = React.createClass({
                 </UploadPicker>
                 <div>
                     <img src={self.state.src} alt="" style={{maxWidth:100+'px'}}/>
-                    <button type="button" onClick={function () {
+                    <button type="button"
+                        onClick={function () {
                             self.setState({
                                 id: '',
                                 src: ''
