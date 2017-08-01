@@ -6,10 +6,10 @@ var App = React.createClass({
     getInitialState: function () {
         return {
             list:[
-                {
-                    src: '',
-                    id: '',
-                }
+                // {
+                //     src: '',
+                //     id: '',
+                // }
             ]
         }
     },
@@ -21,8 +21,8 @@ var App = React.createClass({
                     action="/upload?status=success"
                     drop={true}
                     onPick={function (files) {
-                        console.log(files)
-                        let list = []
+                        console.log('onPick : ',files)
+                        let list = self.state.list
                         for(let key in files){
                             list.push({
                                 src:files[key].thumb,
@@ -64,7 +64,7 @@ var App = React.createClass({
                         }
                     }}
                     onError={function(errFiles){
-                        console.log(errFiles)
+                        console.log('onError : ',errFiles)
                     }}
                  >
                     <button type="button"
@@ -76,7 +76,7 @@ var App = React.createClass({
                     {
                         self.state.list.map(function(item,index){
                             return (
-                                <img src={item.src} style={{width:'50px',height:'50px',border:'1px solid #ccc',marginRight:'5px'}}/>
+                                <img key={index} src={item.src} style={{width:'50px',height:'50px',border:'1px solid #ccc',marginRight:'5px'}}/>
                             )
                         })
                     }
