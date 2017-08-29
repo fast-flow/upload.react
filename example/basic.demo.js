@@ -31,6 +31,11 @@ var App = React.createClass({
                 <UploadPicker name="file"
                     action={self.state.action}
                     data={{'a':'1'}}
+                    thumb={{
+                        text:{
+                            default:'http://dummyimage.com/200x200/eee/fff/text=text'
+                        }
+                    }}
                     onPick={function (files) {
                         console.log(files)
                         self.setState({
