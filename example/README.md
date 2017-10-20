@@ -7,6 +7,8 @@
 3. [ie8](./ie8.md)
 4. [custom-style](./custom-style.md)
 5. [drop](./drop.md)
+6. [folder](./folder.md)
+7. [resume](./resume.md)
 
 
 ## Basic

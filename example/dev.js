@@ -54,3 +54,21 @@ var render = ReactDOM.render
         render(<Demo />, node)
     })
 })(document.getElementById('example__drop_node'))
+
+// folder
+;(function (node) {
+    if (!node) {return}
+    require(['./folder.demo.js'], function (Demo) {
+        Demo = Demo.default || Demo
+        render(<Demo />, node)
+    })
+})(document.getElementById('example__folder_node'))
+
+// resume
+;(function (node) {
+    if (!node) {return}
+    require(['./resume.demo.js'], function (Demo) {
+        Demo = Demo.default || Demo
+        render(<Demo />, node)
+    })
+})(document.getElementById('example__resume_node'))
