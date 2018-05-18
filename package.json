@@ -1,7 +1,7 @@
 {
     "name": "upload.react",
     "main": "lib/index.js",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Upload",
     "keywords": "",
     "scripts": {
