@@ -14,7 +14,6 @@ class Folder extends React.Component {
 	}
     render () {
     	let self = this
-        console.log('folder')
         return (
             <div className="folderDemo" >
                 <UploadPicker 
