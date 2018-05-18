@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="theme/face/face.css">
+<meta name="keywords" content="">
+<meta name="description" content="文档">
+<title>文档</title>
+</head>
+<body>
+<div class="face-one-head">
+    <a class="face-one-head-logo" href="../index.html">
+        <img src="theme/media/logo.svg" alt="" class="face-one-head-logo-photo" />
+        upload.react
+    </a>
+    <span class="face-one-head-slogan">
+        Write less code, do more things!
+    </span>
+    <!-- <div class="face-one-head-search">
+        <span class="face-one-head-search-icon fi fi-search"></span>
+        <input type="text" class="face-one-head-search-input" placeholder="搜索..." />
+    </div> -->
+    <div class="face-one-head-nav">
+        <span class="face-one-head-nav-switch fi fi-bars"></span>
+        <div class="face-one-head-nav-F-cnt">
+            <a href="../index.html" class="face-one-head-nav-link">首页</a>
+            <a href="intro.html" class="face-one-head-nav-link">指引</a>
+            <a href="index.html" class="face-one-head-nav-link">文档</a>
+        </div>
+        <script>
+        Array.from(document.querySelectorAll('.face-one-head-nav-link')).forEach(function (node) {
+            if (node.href) {
+                var pathname = node.href.replace(/\?.*/, '')
+                if (pathname === location.origin + location.pathname) {
+                    node.setAttribute('class', node.getAttribute('class') + ' ' + 'face-one-head-nav-link--on')
+                }
+            }
+        })
+        </script>
+    </div>
+</div>
+
+<div class="face-one-layout">
+<div class="face-one-layout-F-line">
+<div class="face-one-layout-sidebar">
+<div class="face-one-nav">
+<span class="face-one-nav-switch fi fi-menu-unfold"></span>
+<div class="face-one-nav-F-inner">
+<div class="face-one-nav-item">
+    <a href="intro.html" class="face-one-nav-item-label">指引</a>
+</div>
+<div class="face-one-nav-item">
+    <a href="index.html" class="face-one-nav-item-label">文档</a>
+</div>
+<!-- face-one-nav-item--group-on 控制默认展开 -->
+<!-- <div class="face-one-nav-item face-one-nav-item--group face-one-nav-item--group-on">
+    <span class="face-one-nav-item-switch fi fi-down"></span>
+    <span class="face-one-nav-item-label">
+        文档
+    </span>
+    <div class="face-one-nav-item-group">
+        <div class="face-one-nav-item-group-title">示例</div>
+        <a href="index.html#style" class="face-one-nav-item-group-item">颜色</a>
+        <a href="index.html#border" class="face-one-nav-item-group-item">边框</a>
+    </div>
+    <div class="face-one-nav-item-group">
+        <div class="face-one-nav-item-group-title">自定义界面</div>
+        <a href="index.html#less" class="face-one-nav-item-group-item">less</a>
+    </div>
+</div> -->
+
+</div>
+</div>
+</div>
+<div class="face-one-layout-cnt">
+<div id="face-one-cnt" class="face-one-cnt markdown-body">
+<div id="face-one-sidebar" class="face-one-sidebar"></div>
+<h1 id="文档" ><a class="markrun-anchor" href="../Users/GrifreeMac/Documents/github/onface/upload.react/#文档"><span class="markrun-anchor-link"></span></a>文档</h1><h2 id="basic" ><a class="markrun-anchor" href="../Users/GrifreeMac/Documents/github/onface/upload.react/#basic"><span class="markrun-anchor-link"></span></a>basic</h2>
+    <div class="face-one-code  face-one-code--open ">
+                        <div class="face-one-code-F-view">
+                            <div class="face-one-code-example">
+                                <div id="basic-demo" ></div>
+                            </div>
+                            <div class="face-one-code-info">
+                                <div class="face-one-code-info-title">基础使用</div>
+                                <div class="face-one-code-info-desc">
+                                    
+                                </div>
+                                <span class="face-one-code-info-switchCode fi fi-code"></span>
+                            </div>
+                        </div>
+                        <div class="face-one-code-source">
+                            <div class="face-one-code-source-tool">
+                                <span class="face-one-code-source-tool-copy fi fi-files-o"></span>
+                            </div>
+                            <pre><code class="lang-js">var React = require(<span class="hljs-string">'react'</span>)
+import UploadPicker, {UploadFile } from <span class="hljs-string">'upload.react'</span>
+class Basic extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            src: <span class="hljs-string">''</span>,
+            id: <span class="hljs-string">''</span>,
+            action:<span class="hljs-string">'/upload?status=success'</span>
+        }
+    }
+    render () {
+        <span class="hljs-keyword">let</span> self = this
+        <span class="hljs-keyword">return</span> (
+            &lt;div className=<span class="hljs-string">"basicDemo"</span> &gt;
+                {<span class="hljs-string">'xhr type :  '</span>}
+                &lt;select onChange={<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span>{</span>
+                            self.setState({
+                                action:<span class="hljs-keyword">e</span>.target.value
+                            })
+                        }}
+                &gt;
+                    &lt;option value=<span class="hljs-string">"/upload?status=success"</span> &gt;xhr success&lt;/option&gt;
+                    &lt;option value=<span class="hljs-string">"/upload?status=error"</span> &gt;xhr error&lt;/option&gt;
+                    &lt;option value=<span class="hljs-string">"/upload?status=500"</span> &gt;xhr <span class="hljs-number">500</span>&lt;/option&gt;
+                    &lt;option value=<span class="hljs-string">"/upload?status=307"</span> &gt;xhr <span class="hljs-number">307</span>&lt;/option&gt;
+                    &lt;option value=<span class="hljs-string">"http://127.0.0.1:32954/upload?status=success"</span> &gt;xhr cross-domain&lt;/option&gt;
+                &lt;/select&gt;
+                &lt;hr /&gt;
+                &lt;UploadPicker name=<span class="hljs-string">"file"</span>
+                    action={self.state.action}
+                    data={{<span class="hljs-string">'a'</span>:<span class="hljs-string">'1'</span>}}
+                    thumb={{
+                        tex<span class="hljs-variable">t:</span>{
+                            defaul<span class="hljs-variable">t:</span><span class="hljs-string">'http://dummyimage.com/200x200/eee/fff/text=text'</span>
+                        }
+                    }}
+                    onPick={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(files)</span> {</span>
+                        console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">files</span>)
+                        self.setState({
+                            src:<span class="hljs-keyword">files</span>[<span class="hljs-number">0</span>].thumb
+                        })
+                        /*
+                        <span class="hljs-keyword">file</span><span class="hljs-variable">s:</span> [
+                            {
+                                id: <span class="hljs-string">'3fiuhwufhweufgwef'</span>,
+                                name: <span class="hljs-string">'ashdasdasd.jpg'</span>,
+                                // thumb base64 <span class="hljs-built_in">or</span> defaultThumb
+                                // defaultThumb blob
+                                thum<span class="hljs-variable">b:</span> <span class="hljs-string">'BASE64:sufihsiufh'</span>
+                                // ie8 下不存在 File
+                                File: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">File</span><span class="hljs-params">()</span> {}</span>
+                            },
+                        ]
+                        */
+                        UploadFile({
+                            id : <span class="hljs-keyword">files</span>[<span class="hljs-number">0</span>].id ,
+                            onProgress : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(step, file)</span> {</span>
+                                /*
+                                    // 精确的浮点数
+                                    step = <span class="hljs-number">30.214124</span>
+                                */
+                                // <span class="hljs-keyword">let</span> percent = Math.<span class="hljs-built_in">round</span>(step.percent)
+                                console.info(<span class="hljs-string">'上传进度'</span>, step.percent)
+                            },
+                            onSuccess : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(res)</span> {</span>
+                                console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">res</span>)
+                                <span class="hljs-keyword">res</span> = typeof <span class="hljs-keyword">res</span> == <span class="hljs-string">'string'</span> ? JSON.parse(<span class="hljs-keyword">res</span>) : <span class="hljs-keyword">res</span>
+                                <span class="hljs-keyword">if</span>(<span class="hljs-keyword">res</span>.status == <span class="hljs-string">'success'</span>){
+                                    self.setState({
+                                        id: <span class="hljs-keyword">res</span>.data.id
+                                    })
+                                }<span class="hljs-keyword">else</span>{
+                                    console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">res</span>.msg)
+                                }
+                            },
+                            onError : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, res)</span>{</span>
+                                console.<span class="hljs-built_in">log</span>(err,<span class="hljs-keyword">res</span>)
+                            },
+                            onXhrError: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span> {</span>
+                                console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">e</span>)
+                            }
+                        })
+                    }}
+                 &gt;
+                    &lt;button <span class="hljs-built_in">type</span>=<span class="hljs-string">"button"</span>&gt;Picker&lt;/button&gt;
+                &lt;/UploadPicker&gt;
+                <span class="hljs-symbol">&lt;div&gt;</span>
+                    &lt;img src={self.state.src} alt=<span class="hljs-string">""</span> style={{maxWidth:<span class="hljs-number">100</span>+<span class="hljs-string">'px'</span>}}/&gt;
+                    &lt;button <span class="hljs-built_in">type</span>=<span class="hljs-string">"button"</span>
+                        onClick={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+                            self.setState({
+                                id: <span class="hljs-string">''</span>,
+                                src: <span class="hljs-string">''</span>
+                            })
+                        }} &gt;<span class="hljs-built_in">remove</span>&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+
+module.exports = Basic
+
+</code></pre>
+                        </div>
+                        
+                            
+                            
+                    </div>
+                                
+<h2 id="drop" ><a class="markrun-anchor" href="../Users/GrifreeMac/Documents/github/onface/upload.react/#drop"><span class="markrun-anchor-link"></span></a>drop</h2>
+    <div class="face-one-code  face-one-code--open ">
+                        <div class="face-one-code-F-view">
+                            <div class="face-one-code-example">
+                                <div id="drop-demo" ></div>
+                            </div>
+                            <div class="face-one-code-info">
+                                <div class="face-one-code-info-title">基础使用</div>
+                                <div class="face-one-code-info-desc">
+                                    
+                                </div>
+                                <span class="face-one-code-info-switchCode fi fi-code"></span>
+                            </div>
+                        </div>
+                        <div class="face-one-code-source">
+                            <div class="face-one-code-source-tool">
+                                <span class="face-one-code-source-tool-copy fi fi-files-o"></span>
+                            </div>
+                            <pre><code class="lang-js">var React = require(<span class="hljs-string">'react'</span>)
+import UploadPicker, {UploadFile } from <span class="hljs-string">'upload.react'</span>
+class Drop extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            lis<span class="hljs-variable">t:</span>[]
+        }
+    }
+    render () {
+        <span class="hljs-keyword">let</span> self = this
+        <span class="hljs-keyword">return</span> (
+            &lt;div className=<span class="hljs-string">"dropDemo"</span> &gt;
+                &lt;UploadPicker name=<span class="hljs-string">"file"</span>
+                    action=<span class="hljs-string">"/upload?status=success"</span>
+                    <span class="hljs-keyword">drop</span>={true}
+                    onPick={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(files)</span> {</span>
+                        console.<span class="hljs-built_in">log</span>(<span class="hljs-string">'onPick : '</span>,<span class="hljs-keyword">files</span>)
+                        <span class="hljs-keyword">let</span> <span class="hljs-keyword">list</span> = self.state.<span class="hljs-keyword">list</span>
+                        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> key in <span class="hljs-keyword">files</span>){
+                            <span class="hljs-keyword">list</span>.push({
+                                src:<span class="hljs-keyword">files</span>[key].thumb,
+                                id:<span class="hljs-keyword">files</span>[key].id
+                            })
+                        }
+                        self.setState({
+                            lis<span class="hljs-variable">t:list</span>
+                        })
+                        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> key in <span class="hljs-keyword">files</span>){
+                            UploadFile({
+                                id : <span class="hljs-keyword">files</span>[key].id ,
+                                onProgress : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(step, file)</span> {</span>
+                                    /*
+                                        // 精确的浮点数
+                                        step = <span class="hljs-number">30.214124</span>
+                                    */
+                                    // <span class="hljs-keyword">let</span> percent = Math.<span class="hljs-built_in">round</span>(step.percent)
+                                    console.info(<span class="hljs-string">'上传进度'</span>, step.percent)
+                                },
+                                onSuccess : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(res)</span> {</span>
+                                    console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">res</span>)
+                                    <span class="hljs-keyword">res</span> = typeof <span class="hljs-keyword">res</span> == <span class="hljs-string">'string'</span> ? JSON.parse(<span class="hljs-keyword">res</span>) : <span class="hljs-keyword">res</span>
+                                    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">res</span>.status == <span class="hljs-string">'success'</span>){
+                                        self.setState({
+                                            id: <span class="hljs-keyword">res</span>.data.id
+                                        })
+                                    }<span class="hljs-keyword">else</span>{
+                                        console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">res</span>.msg)
+                                    }
+                                },
+                                onError : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, res)</span>{</span>
+                                    console.<span class="hljs-built_in">log</span>(err,<span class="hljs-keyword">res</span>)
+                                },
+                                onXhrError: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span> {</span>
+                                    console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">e</span>)
+                                }
+                            })
+                        }
+                    }}
+                    onError={<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(errFiles)</span>{</span>
+                        console.<span class="hljs-built_in">log</span>(<span class="hljs-string">'onError : '</span>,errFiles)
+                    }}
+                 &gt;
+                    &lt;button <span class="hljs-built_in">type</span>=<span class="hljs-string">"button"</span>
+                        style={{width:<span class="hljs-string">'100px'</span>,heigh<span class="hljs-variable">t:</span><span class="hljs-string">'100px'</span>,border:<span class="hljs-string">'1px solid #333'</span>}}
+                    &gt;Drag it over here&lt;/button&gt;
+                &lt;/UploadPicker&gt;
+                &lt;hr /&gt;
+                <span class="hljs-symbol">&lt;div&gt;</span>
+                    {
+                        self.state.<span class="hljs-keyword">list</span>.<span class="hljs-keyword">map</span>(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(item,index)</span>{</span>
+                            <span class="hljs-keyword">return</span> (
+                                &lt;img key={<span class="hljs-built_in">index</span>} src={item.src} style={{width:<span class="hljs-string">'50px'</span>,heigh<span class="hljs-variable">t:</span><span class="hljs-string">'50px'</span>,border:<span class="hljs-string">'1px solid #ccc'</span>,marginRigh<span class="hljs-variable">t:</span><span class="hljs-string">'5px'</span>}}/&gt;
+                            )
+                        })
+                    }
+                &lt;/div&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+
+module.exports = Drop
+
+</code></pre>
+                        </div>
+                        
+                            
+                            
+                    </div>
+                                
+<h2 id="limit" ><a class="markrun-anchor" href="../Users/GrifreeMac/Documents/github/onface/upload.react/#limit"><span class="markrun-anchor-link"></span></a>limit</h2>
+    <div class="face-one-code  face-one-code--open ">
+                        <div class="face-one-code-F-view">
+                            <div class="face-one-code-example">
+                                <div id="limit-demo" ></div>
+                            </div>
+                            <div class="face-one-code-info">
+                                <div class="face-one-code-info-title">基础使用</div>
+                                <div class="face-one-code-info-desc">
+                                    
+                                </div>
+                                <span class="face-one-code-info-switchCode fi fi-code"></span>
+                            </div>
+                        </div>
+                        <div class="face-one-code-source">
+                            <div class="face-one-code-source-tool">
+                                <span class="face-one-code-source-tool-copy fi fi-files-o"></span>
+                            </div>
+                            <pre><code class="lang-js"><span class="hljs-keyword">var</span> React = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react'</span>)
+<span class="hljs-keyword">import</span> UploadPicker, {UploadFile } <span class="hljs-keyword">from</span> <span class="hljs-string">'upload.react'</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Limit</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    <span class="hljs-keyword">constructor</span>(props){
+        <span class="hljs-keyword">super</span>(props)
+        <span class="hljs-keyword">this</span>.state = {
+        }
+    }
+    render () {
+        <span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"limitDemo"</span> &gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">UploadPicker</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"/upload?status=success"</span>
+                    <span class="hljs-attr">allow</span>=<span class="hljs-string">{[</span>'<span class="hljs-attr">.jpg</span>']}
+                    <span class="hljs-attr">size</span>=<span class="hljs-string">{1024}</span> // 单位<span class="hljs-attr">:K</span>
+                    <span class="hljs-attr">onError</span>=<span class="hljs-string">{function(errFiles){</span>
+                        <span class="hljs-attr">console.log</span>(<span class="hljs-attr">errFiles</span>)
+                        /*
+                        <span class="hljs-attr">errFilesLists:</span> [
+                            {
+                                <span class="hljs-attr">file:</span> [ <span class="hljs-attr">Object</span> <span class="hljs-attr">File</span> ],
+                                <span class="hljs-attr">errType:</span>'<span class="hljs-attr">TYPE</span>' // 文件类型错误
+                            },
+                            {
+                                <span class="hljs-attr">file:</span> [ <span class="hljs-attr">Object</span> <span class="hljs-attr">File</span> ],
+                                <span class="hljs-attr">errType:</span>'<span class="hljs-attr">SIZE</span>' // 文件大小错误
+                            },
+                        ]
+                        */
+                        <span class="hljs-attr">alert</span>(<span class="hljs-attr">errFiles</span>[<span class="hljs-attr">0</span>]<span class="hljs-attr">.errType</span>)
+                    }}
+                    <span class="hljs-attr">onPick</span>=<span class="hljs-string">{function</span> (<span class="hljs-attr">files</span>) {
+                        <span class="hljs-attr">console.log</span>(<span class="hljs-attr">files</span>)
+                    }}
+                 &gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>Picker<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">UploadPicker</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+        )
+    }
+}
+
+<span class="hljs-built_in">module</span>.exports = Limit
+
+</code></pre>
+                        </div>
+                        
+                            
+                            
+                    </div>
+                                
+<h2 id="multiple" ><a class="markrun-anchor" href="../Users/GrifreeMac/Documents/github/onface/upload.react/#multiple"><span class="markrun-anchor-link"></span></a>multiple</h2>
+    <div class="face-one-code  face-one-code--open ">
+                        <div class="face-one-code-F-view">
+                            <div class="face-one-code-example">
+                                <div id="multiple-demo" ></div>
+                            </div>
+                            <div class="face-one-code-info">
+                                <div class="face-one-code-info-title">基础使用</div>
+                                <div class="face-one-code-info-desc">
+                                    
+                                </div>
+                                <span class="face-one-code-info-switchCode fi fi-code"></span>
+                            </div>
+                        </div>
+                        <div class="face-one-code-source">
+                            <div class="face-one-code-source-tool">
+                                <span class="face-one-code-source-tool-copy fi fi-files-o"></span>
+                            </div>
+                            <pre><code class="lang-js">var React = require(<span class="hljs-string">'react'</span>)
+import UploadPicker, {UploadFile } from <span class="hljs-string">'upload.react'</span>
+class Multiple extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+        }
+    }
+    render () {
+        <span class="hljs-keyword">let</span> self = this
+        <span class="hljs-keyword">return</span> (
+            &lt;div className=<span class="hljs-string">"multipleDemo"</span> &gt;
+                &lt;UploadPicker name=<span class="hljs-string">"file"</span> action=<span class="hljs-string">"/upload?status=success"</span>
+                    multiple={true}
+                    onPick={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(files)</span> {</span>
+                        console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">files</span>)
+                        /*
+                        <span class="hljs-keyword">file</span><span class="hljs-variable">s:</span> [
+                            {
+                                id: <span class="hljs-string">'3fiuhwufhweufgwef'</span>,
+                                name: <span class="hljs-string">'ashdasdasd.jpg'</span>,
+                                // thumb base64 <span class="hljs-built_in">or</span> defaultThumb
+                                // defaultThumb blob
+                                thum<span class="hljs-variable">b:</span> <span class="hljs-string">'BASE64:sufihsiufh'</span>
+                                // ie8 下不存在 File
+                                File: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">File</span><span class="hljs-params">()</span> {}</span>
+                            },
+                        ]
+                        */
+                        <span class="hljs-keyword">files</span>.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(item,index)</span> {</span>
+                            console.<span class="hljs-built_in">log</span>(item)
+                            UploadFile({
+                                id : item.id ,
+                                onProgress : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(step, file)</span> {</span>
+                                    /*
+                                        // 精确的浮点数
+                                        step = <span class="hljs-number">30.214124</span>
+                                    */
+                                    // <span class="hljs-keyword">let</span> percent = Math.<span class="hljs-built_in">round</span>(step.percent)
+                                    console.info(<span class="hljs-string">'上传进度'</span>,<span class="hljs-keyword">file</span>.id,<span class="hljs-keyword">file</span>.name, step.percent)
+                                },
+                                onSuccess : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(res)</span> {</span>
+                                    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">res</span>.status == <span class="hljs-string">'success'</span>){
+                                        self.setState({
+                                            id: <span class="hljs-keyword">res</span>.data.id
+                                        })
+                                    }<span class="hljs-keyword">else</span>{
+                                        alert(<span class="hljs-keyword">res</span>.msg)
+                                    }
+                                },
+                                onError : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, res)</span>{</span>
+                                    console.<span class="hljs-built_in">log</span>(err,<span class="hljs-keyword">res</span>)
+                                },
+                                onXhrError: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span> {</span>
+                                    console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">e</span>)
+                                }
+                            })
+                        })
+                    }}
+                 &gt;
+                    &lt;button <span class="hljs-built_in">type</span>=<span class="hljs-string">"button"</span>&gt;Picker&lt;/button&gt;
+                &lt;/UploadPicker&gt;
+                <span class="hljs-symbol">&lt;div&gt;</span>
+                    &lt;img src={self.state.src} alt=<span class="hljs-string">""</span>/&gt;
+                    &lt;button <span class="hljs-built_in">type</span>=<span class="hljs-string">"button"</span> onClick={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+                            self.setState({
+                                id: <span class="hljs-string">''</span>,
+                                src: <span class="hljs-string">''</span>
+                            })
+                        }} &gt;<span class="hljs-built_in">remove</span>&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+
+module.exports = Multiple
+
+</code></pre>
+                        </div>
+                        
+                            
+                            
+                    </div>
+                                
+<h2 id="multiple step" ><a class="markrun-anchor" href="../Users/GrifreeMac/Documents/github/onface/upload.react/#multiple step"><span class="markrun-anchor-link"></span></a>multiple step</h2>
+    <div class="face-one-code  face-one-code--open ">
+                        <div class="face-one-code-F-view">
+                            <div class="face-one-code-example">
+                                <div id="multipleStep-demo" ></div>
+                            </div>
+                            <div class="face-one-code-info">
+                                <div class="face-one-code-info-title">基础使用</div>
+                                <div class="face-one-code-info-desc">
+                                    
+                                </div>
+                                <span class="face-one-code-info-switchCode fi fi-code"></span>
+                            </div>
+                        </div>
+                        <div class="face-one-code-source">
+                            <div class="face-one-code-source-tool">
+                                <span class="face-one-code-source-tool-copy fi fi-files-o"></span>
+                            </div>
+                            <pre><code class="lang-js"><span class="hljs-keyword">var</span> React = <span class="hljs-keyword">require</span>(<span class="hljs-string">'react'</span>)
+import UploadPicker, {UploadFile } from <span class="hljs-string">'upload.react'</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MultipleStep</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    constructor(props){
+        super(props)
+        this.state = {
+            images: [
+                <span class="hljs-comment">/*
+                    {
+                        src: 'dshfusahf.jpg',
+                        id: 'sever_id:sduihasiudhasd',
+                        fileid: 'asiudjuiashfuahsf',
+                        step: 40
+                    },
+                    {
+                        src: '',
+                        id: '',
+                        fileid: 'asiudjuiashfuahsf',
+                        step: false
+                    }
+                */</span>
+            ]
+        }
+    }
+    render () {
+        <span class="hljs-keyword">let</span> <span class="hljs-keyword">self</span> = this
+        <span class="hljs-keyword">return</span> (
+            &lt;div className=<span class="hljs-string">"multipleStepDemo"</span> &gt;
+                &lt;UploadPicker name=<span class="hljs-string">"file"</span> action=<span class="hljs-string">"/upload"</span>
+                    multiple={<span class="hljs-keyword">true</span>}
+                    onChange={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(files)</span> </span>{
+                        <span class="hljs-comment">/*
+                        files: [
+                            {
+                                id: '3fiuhwufhweufgwef',
+                                filename: 'ashdasdasd.jpg',
+                                // ie8 下不存在 File
+                                File: function File() {}
+                            }
+                        ]
+                        */</span>
+                        files.<span class="hljs-keyword">forEach</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(file)</span> </span>{
+                            UploadFile.upload(file.id)
+                        })
+                    }}
+                    onProgress={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(step, file)</span> </span>{
+                        step = Math.round(step)
+                        <span class="hljs-keyword">var</span> images = <span class="hljs-keyword">self</span>.state.images
+                        images.some(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(item, index)</span> </span>{
+                            <span class="hljs-keyword">if</span> (item.fileid === file.id) {
+                                images[index].step = step
+                                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>
+                            }
+                        })
+                        <span class="hljs-keyword">self</span>.setState({
+                            images: images
+                        })
+                    }}
+                    onUpload={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(res, file)</span> </span>{
+                        res = JSON.parse(res)
+                        <span class="hljs-keyword">var</span> images = <span class="hljs-keyword">self</span>.state.images
+                        images.some(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(item, index)</span> </span>{
+                            <span class="hljs-keyword">if</span> (item.fileid === file.id) {
+                                images[index].id = res.data.id
+                                images[index].src = res.data.src
+                                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>
+                            }
+                        })
+                        <span class="hljs-keyword">self</span>.setState({
+                            images: images
+                        })
+                    }}
+                 &gt;
+                    &lt;button type=<span class="hljs-string">"button"</span>&gt;Picker&lt;/button&gt;
+                &lt;/UploadPicker&gt;
+                {
+                    <span class="hljs-keyword">self</span>.state.images.map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(item)</span> </span>{
+                        <span class="hljs-keyword">var</span> click = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                            <span class="hljs-keyword">var</span> images = <span class="hljs-keyword">self</span>.state.images
+                            images = images.filter(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(item, index)</span></span>{
+                                <span class="hljs-keyword">if</span> (item.fileid === item.id) {
+                                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>
+                                }
+                                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>
+                            })
+                            <span class="hljs-keyword">self</span>.setState({
+                                images: images
+                            })
+                        }
+                        <span class="hljs-keyword">return</span> (
+                            &lt;div&gt;
+                                &lt;img src={item.src} alt=<span class="hljs-string">""</span>/&gt;
+                                {item.step}
+                                &lt;button type=<span class="hljs-string">"button"</span> onClick={click} &gt;remove&lt;/button&gt;
+                            &lt;/div&gt;
+                        )
+                    })
+                }
+            &lt;/div&gt;
+        )
+    }
+}
+
+module.exports = MultipleStep
+
+</code></pre>
+                        </div>
+                        
+                            
+                            
+                    </div>
+                                
+<h2 id="folder" ><a class="markrun-anchor" href="../Users/GrifreeMac/Documents/github/onface/upload.react/#folder"><span class="markrun-anchor-link"></span></a>folder</h2>
+    <div class="face-one-code  face-one-code--open ">
+                        <div class="face-one-code-F-view">
+                            <div class="face-one-code-example">
+                                <div id="folder-demo" ></div>
+                            </div>
+                            <div class="face-one-code-info">
+                                <div class="face-one-code-info-title">基础使用</div>
+                                <div class="face-one-code-info-desc">
+                                    
+                                </div>
+                                <span class="face-one-code-info-switchCode fi fi-code"></span>
+                            </div>
+                        </div>
+                        <div class="face-one-code-source">
+                            <div class="face-one-code-source-tool">
+                                <span class="face-one-code-source-tool-copy fi fi-files-o"></span>
+                            </div>
+                            <pre><code class="lang-js"><span class="hljs-keyword">var</span> React = <span class="hljs-keyword">require</span>(<span class="hljs-string">'react'</span>)
+import UploadPicker, {UploadFile } from <span class="hljs-string">'upload.react'</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Folder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    constructor(props){
+        super(props)
+        this.state = {
+            <span class="hljs-keyword">list</span>:[
+                <span class="hljs-comment">// {</span>
+                <span class="hljs-comment">//     src: '',</span>
+                <span class="hljs-comment">//     id: '',</span>
+                <span class="hljs-comment">// }</span>
+            ]
+        }
+    }
+    render () {
+        <span class="hljs-keyword">let</span> <span class="hljs-keyword">self</span> = this
+        <span class="hljs-keyword">return</span> (
+            &lt;div className=<span class="hljs-string">"folderDemo"</span> &gt;
+                &lt;UploadPicker 
+                    name=<span class="hljs-string">"file"</span>
+                    action=<span class="hljs-string">"/upload?status=success"</span>
+                    onPick={<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(files)</span> </span>{
+                        console.log(<span class="hljs-string">'onPick : '</span>,files)
+                        <span class="hljs-keyword">let</span> <span class="hljs-keyword">list</span> = <span class="hljs-keyword">self</span>.state.<span class="hljs-keyword">list</span>
+                        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> key in files){
+                            <span class="hljs-keyword">list</span>.push({
+                                src:files[key].thumb,
+                                id:files[key].id
+                            })
+                        }
+                        <span class="hljs-keyword">self</span>.setState({
+                            <span class="hljs-keyword">list</span>:<span class="hljs-keyword">list</span>
+                        })
+                    }}
+                    onError={<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(errFiles)</span></span>{
+                        console.log(<span class="hljs-string">'onError : '</span>,errFiles)
+                    }}
+                    multiple
+                    webkitdirectory
+                 &gt;
+                    &lt;button type=<span class="hljs-string">"button"</span>
+                        style={{width:<span class="hljs-string">'100px'</span>,height:<span class="hljs-string">'100px'</span>,border:<span class="hljs-string">'1px solid #333'</span>}}
+                    &gt;<span class="hljs-keyword">try</span> click to choose folder&lt;/button&gt;
+                &lt;/UploadPicker&gt;
+                &lt;hr /&gt;
+                &lt;div&gt;
+                    {
+                        <span class="hljs-keyword">self</span>.state.<span class="hljs-keyword">list</span>.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(item,index)</span></span>{
+                            <span class="hljs-keyword">return</span> (
+                                &lt;img key={index} src={item.src} style={{width:<span class="hljs-string">'50px'</span>,height:<span class="hljs-string">'50px'</span>,border:<span class="hljs-string">'1px solid #ccc'</span>,marginRight:<span class="hljs-string">'5px'</span>}}/&gt;
+                            )
+                        })
+                    }
+                &lt;/div&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+
+module.exports = Folder
+
+</code></pre>
+                        </div>
+                        
+                            
+                            
+                    </div></div>
+</div>
+</div>
+</div>
+<script>
+Array.from(document.querySelectorAll('.face-one-nav-item-label')).forEach(function (node) {
+    if (node.href) {
+        var pathname = node.href.replace(/\?.*/, '')
+        if (pathname === location.origin + location.pathname + location.hash) {
+            node.setAttribute('class', node.getAttribute('class') + ' ' + 'face-one-nav-item-label--on')
+        }
+    }
+})
+var faceOneGetParent = function faceOneGetParent (el, className) {
+   if (el.parentNode.nodeName.toLowerCase() === 'html') {
+       return null
+   }
+   var parentClassName = el.parentNode.getAttribute('class')
+   var classNames = ''
+   if (parentClassName) {
+       classNames = parentClassName.split(' ')
+   }
+   if (classNames.indexOf(className) !== -1) {
+       return el.parentNode
+   }
+   else {
+       return faceOneGetParent(el.parentNode, className)
+   }
+}
+Array.from(document.querySelectorAll('.face-one-nav-item-group-item')).forEach(function (node) {
+    addAvativeClass(node)
+    function addAvativeClass (node)  {
+        if (node.href) {
+            var pathname = node.href.replace(/\?.*/, '')
+            if (pathname === location.origin + location.pathname + location.hash) {
+                node.setAttribute('class', node.getAttribute('class') + ' ' + 'face-one-nav-item-group-item--on')
+                var parentNode = faceOneGetParent(node, 'face-one-nav-item--group')
+                if (parentNode) {
+                    parentNode.setAttribute('class', parentNode.getAttribute('class') + ' ' + 'face-one-nav-item--group-on')
+                }
+            }
+        }
+    }
+
+})
+</script>
+<div class="face-one-foot">
+    <div class="face-one-foot-F-inner">
+        <div class="face-one-foot-group">
+            <div class="face-one-foot-group-title">
+                <span class="face-one-foot-group-title-icon fi fi-github"></span>
+                Github
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/upload.react" class="face-one-foot-group-item-link">upload.react</a>
+                - 项目源码
+            </div>
+        </div>
+        <div class="face-one-foot-group">
+            <div class="face-one-foot-group-title">
+                <span class="face-one-foot-group-title-icon fi fi-link"></span>
+                相关站点
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://onface.github.io/component-spec">component-spec</a>
+                - 组件规范
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/module" class="face-one-foot-group-item-link">module</a>
+                - 开源项目脚手架
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="http://onface.cc/" class="face-one-foot-group-item-link">onface.cc</a>
+                - 资源集合
+            </div>
+        </div>
+        <div class="face-one-foot-group">
+            <div class="face-one-foot-group-title">
+                <span class="face-one-foot-group-title-icon fi fi-team"></span>
+                社区
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/upload.react/issues" class="face-one-foot-group-item-link">Github issues</a>
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/upload.react/issues/new" class="face-one-foot-group-item-link">提交bug</a>
+            </div>
+        </div>
+        <div class="face-one-foot-copyright">
+            <a href="../index.html" class="face-one-foot-copyright-title">
+                <img src="theme/media/logo.svg" class="face-one-foot-copyright-title-logo" />
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="theme/jquery.js"></script>
+<script>delete window.$</script>
+<script src="theme/face/face.js" ></script>
+<script data-markrun-lastrun="true">
+                            document.write('<scri' + 'pt src="./basic.demo.js?v=0.2.0"' + '" ></sc' + 'ript>')
+                            </script><script data-markrun-lastrun="true">
+                            document.write('<scri' + 'pt src="./drop.demo.js?v=0.2.0"' + '" ></sc' + 'ript>')
+                            </script><script data-markrun-lastrun="true">
+                            document.write('<scri' + 'pt src="./limit.demo.js?v=0.2.0"' + '" ></sc' + 'ript>')
+                            </script><script data-markrun-lastrun="true">
+                            document.write('<scri' + 'pt src="./multiple.demo.js?v=0.2.0"' + '" ></sc' + 'ript>')
+                            </script><script data-markrun-lastrun="true">
+                            document.write('<scri' + 'pt src="./multipleStep.demo.js?v=0.2.0"' + '" ></sc' + 'ript>')
+                            </script><script data-markrun-lastrun="true">
+                            document.write('<scri' + 'pt src="./folder.demo.js?v=0.2.0"' + '" ></sc' + 'ript>')
+                            </script></body>
+</html>

@@ -1,0 +1,25 @@
+/* Although the file suffix is CSS, but it will be less compilation */
+/* The CSS specification: https://github.com/fast-flow/trees */
+/* Base style */
+.face-upload-xhr {
+  position: relative;
+}
+.face-upload-xhr-input {
+  display: none;
+}
+.face-upload-iframe-label {
+  position: relative;
+}
+.face-upload-iframe-iframe,
+.face-upload-iframe-form,
+.face-upload-iframe-form-input {
+  /* 不能设为display:none; 否则ie下无法聚焦触发提交表单  */
+  width: 0;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -10;
+}
+/* Configurable style */
